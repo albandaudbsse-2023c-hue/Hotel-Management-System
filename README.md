@@ -44,38 +44,6 @@ The non-functional requirements describe system quality attributes.
 •	The system shall ensure data consistency and prevent data loss.
 6.5 Scalability
 •	The system shall support future enhancements such as online booking and mobile access.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-7. Screenshots of Code Output
-This section includes screenshots demonstrating the working of the system. The following screenshots should be added:
-•	Login screen
- 
-•	Dashboard showing room availability
- 
-•	Reservation creation screen
- 
-•	Guest details screen
- 
 8. Conclusion
 The Hotel Management System provides an effective solution for managing hotel operations digitally. By automating reservations, guest management, the system reduces manual effort, minimizes errors, and improves service quality. This project demonstrates how software engineering principles can be applied to solve real-world problems in the hospitality domain.
 
