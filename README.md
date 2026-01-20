@@ -46,4 +46,3 @@ The non-functional requirements describe system quality attributes.
 •	The system shall support future enhancements such as online booking and mobile access.
 8. Conclusion
 The Hotel Management System provides an effective solution for managing hotel operations digitally. By automating reservations, guest management, the system reduces manual effort, minimizes errors, and improves service quality. This project demonstrates how software engineering principles can be applied to solve real-world problems in the hospitality domain.
-
