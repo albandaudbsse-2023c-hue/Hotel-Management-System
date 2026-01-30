@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ hotel_name }} - Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="bi bi-building"></i> {{ hotel_name }}</a>
+            <div class="navbar-nav">
+                <a class="nav-link active" href="/">Dashboard</a>
+                <a class="nav-link" href="/rooms">Rooms</a>
+                <a class="nav-link" href="/bookings">Bookings</a>
+                <a class="nav-link" href="/logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4"><i class="bi bi-house-door"></i> Dashboard</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-header bg-success text-white">
+                        <h5><i class="bi bi-door-open"></i> Rooms</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            {% for room in rooms %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Room {{ room.number }} - {{ room.type }} - ${{ room.price }}
+                                <span class="badge bg-{% if room.available %}success{% else %}danger{% endif %}">
+                                    {% if room.available %}Available{% else %}Booked{% endif %}
+                                </span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-header bg-info text-white">
+                        <h5><i class="bi bi-calendar-check"></i> Bookings</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            {% for booking in bookings %}
+                            <li class="list-group-item">
+                                {{ booking.guest.name }} - Room {{ booking.room.number }} ({{ booking.check_in }} to {{ booking.check_out }})
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
